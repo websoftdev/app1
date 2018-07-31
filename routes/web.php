@@ -32,5 +32,19 @@ Route::get('/admin', function(){
     return view('admin.index');
 });
 
+Route::group(['middleware'=>'admin'], function(){
 
-Route::resource('admin/users', 'AdminUsersController');
+    Route::resource('admin/users', 'AdminUsersController');
+    Route::resource('admin/posts', 'AdminPostsController');
+
+});
+
+Route::get('/str', function(){
+
+    $name = 'Jose Luis';
+    echo str_replace([' '],['_'], $name);
+
+    $user = Auth::user()->name;
+    echo  $user;
+
+});

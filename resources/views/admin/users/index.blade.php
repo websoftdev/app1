@@ -2,6 +2,16 @@
 
 @section('content')
 
+    @if(Session::has('deleted_user'))
+
+        <div class="alert-danger">
+
+            <p>{{session('deleted_user')}}</p>
+
+        </div>
+
+    @endif
+
     <h1>Users list</h1>
 
 
