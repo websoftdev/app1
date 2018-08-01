@@ -36,7 +36,11 @@ class AdminCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+     Category::create($request->all());
+    //Category::create(['name'=>'CLOJURE']);
+        return redirect('/admin/cat');
     }
 
     /**
@@ -59,6 +63,9 @@ class AdminCategoriesController extends Controller
     public function edit($id)
     {
         //
+
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -70,7 +77,11 @@ class AdminCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $category = Category::findOrFail($id);
+        $category->update($request->all());
+        return redirect('/admin/cat');
+
     }
 
     /**
@@ -81,6 +92,8 @@ class AdminCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect('/admin/cat');
     }
 }
