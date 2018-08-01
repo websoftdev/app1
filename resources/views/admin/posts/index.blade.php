@@ -32,8 +32,8 @@
                     <td>{{$post->user->name}}</td>
                     <td>{{$post->category_id ? $post->category->name : "No category"}}</td>
                     <td><img height="50" width="50" src="{{$post->photo_id ? $post->photo->file  : "/images/x.jpg"}}"></td>
-                    <td>{{$post->title}}</td>
-                    <td>{{$post->body}}</td>
+                    <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
+                    <td>{{str_limit($post->body, 5)}}</td>
                     <td>{{$post->created_at}}</td>
                     <td>{{$post->updated_at}}</td>
 
