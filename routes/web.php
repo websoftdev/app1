@@ -37,6 +37,13 @@ Route::group(['middleware'=>'admin'], function(){
     Route::resource('admin/users', 'AdminUsersController');
     Route::resource('admin/posts', 'AdminPostsController');
     Route::resource('admin/cat', 'AdminCategoriesController');
+    Route::get('admin/media/index', 'MediaController@index');
+    Route::get('admin/media/create', ['as'=>'admin.media.create', 'uses'=>'MediaController@create']);
+    Route::post('admin/media/store',['as'=>'admin.media.store', 'uses'=>'MediaController@store']);
+    Route::delete('admin/media/destroy/{id}',['as'=>'admin.media.destroy', 'uses'=>'MediaController@destroy']);
+
+    Route::resource('admin/comments', 'PostCommentsController');
+    Route::resource('admin/comment/replies', 'CommentRepliesController');
 
 });
 
@@ -49,3 +56,4 @@ Route::get('/str', function(){
     echo  $user;
 
 });
+
