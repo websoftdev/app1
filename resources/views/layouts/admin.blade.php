@@ -178,15 +178,13 @@
                                 <a href="{{route('admin.media.create')}}">Upload Media</a>
                             </li>
 
+                            <li>
+                                <a href="{{url('admin/comments')}}">All comments</a>
+                            </li>
+
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-
-
-
-
-
-
 
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>

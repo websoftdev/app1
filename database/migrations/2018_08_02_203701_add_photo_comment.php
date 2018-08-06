@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPhotoIdColumn extends Migration
+class AddPhotoComment extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddPhotoIdColumn extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('photo_id')->default(0);
+        Schema::table('comments', function (Blueprint $table) {
+            $table->string('photo_id');
         });
     }
 
@@ -25,8 +25,8 @@ class AddPhotoIdColumn extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('photo_id');
+        Schema::table('comments', function (Blueprint $table) {
+            $table->dropIfExists('photo_id');
         });
     }
 }

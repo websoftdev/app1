@@ -129,4 +129,11 @@ class AdminPostsController extends Controller
 
         return redirect('admin/posts');
     }
-}
+
+    public function post($id){
+        $categories = Category::all();
+        $post = Post::findOrFail($id);
+        return view('post', compact('post', 'categories'));
+
+    }
+    }

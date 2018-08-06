@@ -27,6 +27,7 @@ Route::get('/r/{id}', function($id){
 
 });
 
+Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
 
 Route::get('/admin', function(){
     return view('admin.index');
