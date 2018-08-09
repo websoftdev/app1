@@ -48,6 +48,8 @@ Route::group(['middleware'=>'admin'], function(){
 
 });
 
+Route::delete('/delete/media', 'MediaController@deleteMedia');
+
 Route::get('/str', function(){
 
     $name = 'Jose Luis';
