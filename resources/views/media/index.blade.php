@@ -29,7 +29,7 @@
 
         @foreach($photos as $photo)
             <tr>
-                <td><input type="checkbox" name="checkBoxArray[]" value="{{$photo->id}}"></td>
+                    <td><input class="checkBoxes form-group" type="checkbox" name="checkBoxArray[]" value="{{$photo->id}}"></td>
 
                 <div class="form-group">
                     {!! Form::open(['method'=>'DELETE', 'action'=>['MediaController@destroy', $photo->id]]) !!}
@@ -45,6 +45,35 @@
         @endforeach
 
     </table>
-@endif
-    @stop
+
+        <p id="ja">NADA SELECCIONADO</p>
+
     </form>
+@endif
+
+    @stop
+@section('scripts')
+
+<script>
+    $(document).ready(function(){
+
+        $('#options').click(function() {
+            //$('#ja').html('ssds');
+
+            if(this.checked){
+                $('.checkBoxes').each(function(){
+                    this.checked = true;
+                });
+            }else{
+                $('.checkBoxes').each(function(){
+                    this.checked = false;
+                });
+            }
+
+
+        });
+    });
+
+</script>
+
+    @stop
