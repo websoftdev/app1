@@ -18,6 +18,7 @@
                 <th>body</th>
                 <th>Post</th>
                 <th>Aprovacion</th>
+                <th>Eliminacion</th>
             </tr>
         </thead>
 
@@ -27,7 +28,7 @@
                 <td>{{$comment->email}}</td>
                 <td>{{$comment->body}}</td>
                 <td><a href="{{route('home.post', $comment->post->id)}}">Ir a post</a></td>
-
+                <td><a href="{{route('replies.show', $comment->id)}}">Ver replicas</a></td>
 
                 <td>
 

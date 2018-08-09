@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,7 +47,7 @@ class PostCommentsController extends Controller
             'author' => $user->name,
             'email' => $user->email,
             'body'=> $request->body,
-            'photo_id '=>$user->photo->file
+            'photo'=>$user->photo->file
         ];
 
         Comment::create($data);
@@ -64,7 +65,10 @@ class PostCommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $comments = Post::findOrFail($id)->comments;
+
+        return view('admin.comments.show', compact('comments'));
+
     }
 
     /**

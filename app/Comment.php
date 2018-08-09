@@ -13,7 +13,8 @@ protected $fillable = [
     'is_active',
     'author',
     'email',
-    'body'
+    'body',
+    'photo'
 ];
 
 
@@ -25,5 +26,6 @@ protected $fillable = [
     public function post(){
         return $this->belongsTo('App\Post');
     }
+
 
 }

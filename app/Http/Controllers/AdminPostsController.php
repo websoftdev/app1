@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
 
+
 class AdminPostsController extends Controller
 {
     /**
@@ -18,7 +19,7 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(2);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -42,6 +43,9 @@ class AdminPostsController extends Controller
     public function store(PostsCreateRequest $request)
     {
             $input = $request->all();
+
+            //$title = str_slug($request->title,'-');
+
             $user = Auth::user();
           if($file = $request->file('photo_id')){
 
@@ -130,10 +134,11 @@ class AdminPostsController extends Controller
         return redirect('admin/posts');
     }
 
-    public function post($id){
-        $categories = Category::all();
-        $post = Post::findOrFail($id);
-        return view('post', compact('post', 'categories'));
+    public function post($slug){
 
+        $categories = Category::all();
+        $post = Post::findBySlug($slug);
+        $comments = $post->comments()->whereIsActive(1)->get();
+        return view('post', compact('post','categories', 'comments'));
     }
     }

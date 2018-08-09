@@ -58,3 +58,10 @@ Route::get('/str', function(){
 
 });
 
+Route::group(['middleware'=>'auth'], function(){
+
+    Route::post('comment/reply', 'CommentRepliesController@createReply');
+
+});
+
+
